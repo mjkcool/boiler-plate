@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 // import { Form, Input, Button } from 'antd'
 import { useDispatch } from 'react-redux'
 import { loginUser } from './../../../_actions/user_action'
-// import { response } from 'express'
 
 
 function LoginPage(props) {
@@ -27,12 +26,13 @@ function LoginPage(props) {
             password: Password
         }
 
-        dispatch(loginUser(body))
+        dispatch(loginUser(body)) //call reducer
         .then(response => {
-            if(response.payload.loginSuccess){
+            if(response.payload.loginSuccess){ //로그인 성공
+                alert("로그인 성공")
                 props.history.push('/') //페이지 이동
-            }else{
-                alert('error')
+            }else{ //로그인 실패
+                alert("로그인 실패")
             }
         })
         
@@ -43,8 +43,7 @@ function LoginPage(props) {
             style={{display: 'flex', justifyContent: 'center', alignItems: 'center', 
             width: '100%', height: '100vh'}}>
             <form onSubmit={onSubmitHandler}
-                style={{display: 'flex', flexDirection: 'column'}}
-            >
+                style={{display: 'flex', flexDirection: 'column'}}>
                 <label>Email</label>
                 <input type="email" value={Email} onChange={onEmailHandler} />
                 <label>Password</label>
