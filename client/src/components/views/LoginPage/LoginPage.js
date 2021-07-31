@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react'
-import { Form, Input, Button } from 'antd'
-import Axios from 'axios'
+import React, { useState } from 'react'
+// import { Form, Input, Button } from 'antd'
 import { useDispatch } from 'react-redux'
 import { loginUser } from './../../../_actions/user_action'
+// import { response } from 'express'
 
 
-function LoginPage() {
+function LoginPage(props) {
     const dispatch = useDispatch()
 
     const [Email, setEmail] = useState("")
@@ -28,6 +28,13 @@ function LoginPage() {
         }
 
         dispatch(loginUser(body))
+        .then(response => {
+            if(response.payload.loginSuccess){
+                props.history.push('/') //페이지 이동
+            }else{
+                alert('error')
+            }
+        })
         
     }
 
