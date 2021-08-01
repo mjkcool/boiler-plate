@@ -1,5 +1,7 @@
+const admin = require('./hide.json').mongodb_atlas.user_admin
 const password = require('./hide.json').mongodb_atlas.user_password
+const uri = require('./hide.json').mongodb_atlas.db_uri
 
 module.exports = {
-    mongoURI: `mongodb+srv://mjkcool:${password}@mysite.44udb.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`
+    mongoURI: `mongodb+srv://${admin}:${password}@${uri}/myFirstDatabase?retryWrites=true&w=majority`
 }

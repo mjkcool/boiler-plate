@@ -9,9 +9,28 @@ export default function (SpecificComponent, option, adminRoute = null){
     function AuthenticationCheck(props){
 
         const dispatch = useDispatch()
+
         useEffect(() => {
+
             dispatch(auth()).then(response => {
+
                 console.log(response)
+
+                //status: logged out
+                if(!response.payload.isAuth){
+                    if(option){ //true
+                        props.history.push('/login')
+                    }
+                } else { //status: logged in
+                    //Only admin and they are not
+                    if(adminRoute && !response.payload.isAdmin){
+                        props.history.push('/')
+                    }else{
+                        if(!option){ //Only for logged out
+                            props.history.push('/')
+                        }
+                    }
+                }
             })
         }, [])
 
