@@ -70,7 +70,7 @@ app.post('/api/users/login', (req, res) => {
 })
 
 
-app.post('/api/users/auth', auth/*middle ware*/, (req, res) => {
+app.get('/api/users/auth', auth/*middle ware*/, (req, res) => {
   //미들웨어를 통과하여 옴 = Authentication이 true
   res.status(200).json({
     _id: req.user._id,
