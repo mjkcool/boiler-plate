@@ -76,9 +76,9 @@ function LoginPage(props) {
                 </Form.Item> */}
                 <Form.Item>
                     <Button type="primary" htmlType="submit" className="login-form-button">
-                        Log in
+                        Sign In
                     </Button>
-                    Or <a href="/register">register now</a>
+                    Or <a href="/register">Sign up now</a>
                 </Form.Item>
             </Form>
         </div>
